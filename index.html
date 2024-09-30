@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script type="module">
+        class Rectangle {
+            constructor(height, width) {
+                this.height = height;
+                this.width = width;
+            }
+
+            draw(graph) {
+                graph.draw(this.width, this.height);
+            }
+            log() {
+               console.log("drawing rectangle")
+            }
+        }
+
+        ((clazz) => {
+            const nameCheck = clazz.name == "Rectangle";
+            const isClassCheck = typeof clazz == typeof (() => {}) && typeof clazz.constructor == typeof (() => {});
+            
+            const constructorParameterCountCheck = clazz.length == 2;
+            const classHasMethodsCheck = clazz.prototype.hasOwnProperty("draw") && clazz.prototype.hasOwnProperty("log")
+            const classParameterCountCheck = clazz.prototype.draw.length == 1 && clazz.prototype.log.length == 0;
+
+            if (nameCheck && isClassCheck && constructorParameterCountCheck && classHasMethodsCheck && classParameterCountCheck) {
+                console.log(`This class "${clazz.name}" is ok`);
+            } else {
+                console.log(`This class "${clazz.name}" is not ok`);
+            }
+        })(Rectangle);
+    </script>
+    </script>
+</body>
+</html>
